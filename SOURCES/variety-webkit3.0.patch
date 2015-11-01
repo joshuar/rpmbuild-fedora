@@ -1,0 +1,12 @@
+diff -Naur a/variety/AddPanoramioDialog.py b/variety/AddPanoramioDialog.py
+--- a/variety/AddPanoramioDialog.py	2014-07-17 08:33:00.000000000 -0500
++++ b/variety/AddPanoramioDialog.py	2014-11-10 23:33:06.020929149 -0600
+@@ -16,6 +16,8 @@
+ import json
+ 
+ import logging
++import gi
++gi.require_version("WebKit", "3.0")
+ from gi.repository import Gtk, WebKit, GObject # pylint: disable=E0611
+ from variety.Options import Options
+ from variety_lib.helpers import get_builder

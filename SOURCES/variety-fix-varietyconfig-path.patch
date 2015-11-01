@@ -1,0 +1,11 @@
+diff -Naur a/variety_lib/varietyconfig.py b/variety_lib/varietyconfig.py
+--- a/variety_lib/varietyconfig.py	2014-07-17 08:33:00.000000000 -0500
++++ b/variety_lib/varietyconfig.py	2014-08-13 15:02:36.056513814 -0500
+@@ -27,7 +27,7 @@
+ 
+ # Where your project will look for your data (for instance, images and ui
+ # files). By default, this is ../data, relative your trunk layout
+-__variety_data_directory__ = '../data/'
++__variety_data_directory__ = '/usr/share/variety'
+ __license__ = 'GPL-3'
+ __version__ = '0.5.4'
