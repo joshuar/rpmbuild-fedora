@@ -18,7 +18,7 @@
 
 Name:           variety
 Version:        0.5.4
-Release:        0%{?dist}
+Release:        1%{?dist}
 Summary:        Wallpaper changer
 License:        GPL-3.0
 Group:          Productivity/Multimedia/Other
@@ -31,7 +31,6 @@ Source2:        VarietyIcons.tar.gz
 Patch0:         variety-fix-varietyconfig-path.patch
 # PATCH-FIX-OPENSUSE variety-webkit3.0.patch malcolmlewis@opensuse.org -- Specify in the code that we require WebKit 3.0, not 'any' WebKit
 Patch1:         variety-webkit3.0.patch
-BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool
 BuildRequires:  python2-devel
@@ -39,16 +38,16 @@ BuildRequires:  python-distutils-extra
 BuildRequires:  python-setuptools
 BuildRequires:  desktop-file-utils
 Requires:       ImageMagick
-Requires:       dbus-1-python
-Requires:       libnotify4
+Requires:       dbus-python
+Requires:       libnotify
 Requires:       python-beautifulsoup4
 Requires:       python-configobj
 Requires:       python-httplib2
 Requires:       python-lxml
-Requires:       python-Pillow
+Requires:       python-pillow
 Requires:       python-pycurl
-Requires:       python-pyexiv2
-Requires:       python-webkitgtk
+Requires:       pyexiv2
+Requires:       pywebkitgtk
 Requires:       yelp
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
