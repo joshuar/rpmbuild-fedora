@@ -1,9 +1,8 @@
 Name:           nodejs-esvm
 Version:        3.2.1
-Release:        0%{?dist}
+Release:        2%{?dist}
 Summary:        Command line application used for development to manage different versions of Elasticsearch
 License:        Apache-2.0
-Group:          Productivity/Other
 Source0:        http://registry.npmjs.org/esvm/-/esvm-%{version}.tgz
 Url:            https://github.com/simianhacker/esvm
 BuildRequires:	nodejs-packaging
@@ -27,12 +26,13 @@ need to develop against multiple versions of Elasticsearch.
 
 %prep
 %setup -q -n package
+%nodejs_fixdep rcloader '<=0.2'
 
 %build
 
 %install
 mkdir -p %{buildroot}%{nodejs_sitelib}/esvm
-cp -pr package.json lib/ \
+cp -pr package.json lib/ sample/ \
    %{buildroot}%{nodejs_sitelib}/esvm
 mkdir -p %{buildroot}%{nodejs_sitelib}/esvm/bin
     install -p -D -m0755 bin/esvm.js %{buildroot}%{nodejs_sitelib}/esvm/bin/esvm.js
