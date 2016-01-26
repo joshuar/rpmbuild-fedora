@@ -82,7 +82,6 @@ fi
 /usr/bin/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc README COPYING README
 %{_bindir}/%{name}
 %{_bindir}/%{name}-service

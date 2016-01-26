@@ -102,7 +102,6 @@ fi
 /usr/bin/update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING
 %{_bindir}/%{name}
 %{python2_sitelib}/jumble

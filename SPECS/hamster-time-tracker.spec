@@ -83,7 +83,6 @@ fi
 rm -rf %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-, root, root)
 %doc AUTHORS NEWS
 %{_libdir}/hamster-time-tracker
 %{_bindir}/hamster
