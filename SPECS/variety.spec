@@ -14,23 +14,17 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-%include %{_rpmconfigdir}/macros.python
 
 Name:           variety
-Version:        0.5.4
+Version:        0.6.0
 Release:        1%{?dist}
 Summary:        Wallpaper changer
 License:        GPL-3.0
 Group:          Productivity/Multimedia/Other
-Url:            https://launchpad.net/variety/
+Url:            http://peterlevi.com/variety/
 Source0:        variety_%{version}.tar.gz
-Source1:        variety.desktop
-# Todo: Variety should follow FDO icon standards
-Source2:        VarietyIcons.tar.gz
 # PATCH-FIX-OPENSUSE variety-fix-varietyconfig-path.patch malcolmlewis@opensuse.org -- Set correct path to /usr/share/variety.
 Patch0:         variety-fix-varietyconfig-path.patch
-# PATCH-FIX-OPENSUSE variety-webkit3.0.patch malcolmlewis@opensuse.org -- Specify in the code that we require WebKit 3.0, not 'any' WebKit
-Patch1:         variety-webkit3.0.patch
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool
 BuildRequires:  python2-devel
@@ -63,30 +57,29 @@ until you find the perfect one for your current mood.
 Apart from displaying images from local folders, several different online sources
 can be used to fetch wallpapers according to user-specified criteria.
 
+
 %prep
-%setup -q -n %{name} -a 2
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}
+%patch0 -p0
+ 
 
 %build
 %py2_build
 
+
 %install
-%py2_install
-# python setup.py install --skip-build --prefix=%{_prefix} --root=${RPM_BUILD_ROOT}
-# Create our own desktop file and remove the pre-installed version
-# rm ${RPM_BUILD_ROOT}%{_datadir}/applications/%{name}.desktop
+%{__python2} setup.py install --skip-build --root $RPM_BUILD_ROOT
+install -Dm0644 data/media/variety.svg %{buildroot}%{_datadir}/pixmaps/variety.svg
 desktop-file-install                                    \
     --dir=${RPM_BUILD_ROOT}%{_datadir}/applications         \
-    %{SOURCE1}
+    build/share/applications/variety.desktop
 desktop-file-validate %{buildroot}/%{_datadir}/applications/variety.desktop
-# Todo: Add support for FDO icon standard upstream
-install -Dm0644 data/media/variety.svg %{buildroot}%{_datadir}/pixmaps/variety.svg
-cp VarietyIcons/* ${RPM_BUILD_ROOT}%{_datadir}/variety/media/
+
 
 %post
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 /bin/touch --no-create %{_datadir}/mime/packages &>/dev/null || :
+
 
 %postun
 if [ $1 -eq 0 ] ; then
@@ -97,17 +90,16 @@ if [ $1 -eq 0 ] ; then
     /usr/bin/update-mime-database %{_datadir}/mime &> /dev/null || :
 fi
 
+
 %posttrans
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 /usr/bin/update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
+
 %files
 %doc AUTHORS COPYING
 %{_bindir}/%{name}
-%{python2_sitelib}/jumble
-%{python2_sitelib}/%{name}
-%{python2_sitelib}/%{name}_lib
-%{python2_sitelib}/%{name}-%{version}-py%{py_ver}.egg-info
+%{python2_sitelib}/*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/variety.svg
 %{_datadir}/%{name}

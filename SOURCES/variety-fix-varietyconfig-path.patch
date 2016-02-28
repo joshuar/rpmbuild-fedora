@@ -1,6 +1,5 @@
-diff -Naur a/variety_lib/varietyconfig.py b/variety_lib/varietyconfig.py
---- a/variety_lib/varietyconfig.py	2014-07-17 08:33:00.000000000 -0500
-+++ b/variety_lib/varietyconfig.py	2014-08-13 15:02:36.056513814 -0500
+--- variety_lib/varietyconfig.py.orig	2016-02-28 07:33:12.192000000 +0000
++++ variety_lib/varietyconfig.py	2016-02-28 07:32:39.632000000 +0000
 @@ -27,7 +27,7 @@
  
  # Where your project will look for your data (for instance, images and ui
@@ -8,4 +7,5 @@ diff -Naur a/variety_lib/varietyconfig.py b/variety_lib/varietyconfig.py
 -__variety_data_directory__ = '../data/'
 +__variety_data_directory__ = '/usr/share/variety'
  __license__ = 'GPL-3'
- __version__ = '0.5.4'
+ __version__ = '0.6.0'
+ 
