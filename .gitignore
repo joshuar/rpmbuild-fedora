@@ -5,4 +5,5 @@ RPMS
 SRPMS
 SOURCES/*.tar.*
 SOURCES/*.tgz
+SOURCES/*.zip
 
