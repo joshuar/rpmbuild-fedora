@@ -15,16 +15,13 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%global commit0 81737fd06fe8033dd8949b460052730a732bc120
-%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-
 Name:           hamster-time-tracker
-Version:        20151031git%{shortcommit0}
-Release:        0%{?dist}
+Version:        2.0
+Release:        rc1
 Summary:        A time tracker for GNOME
 License:        GPL-3.0+ and CC-BY-SA-3.0
 Group:          Productivity/Other
-Source0:        https://github.com/projecthamster/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0:        hamster-%{version}-%{release}.tar.gz
 Url:            http://projecthamster.wordpress.com/
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -38,7 +35,7 @@ Requires(pre):  GConf2
 Requires(post): GConf2
 Requires(preun): GConf2
 Obsoletes:      hamster-applet <= 2.91.2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRoot:      %{_tmppath}/hamster-%{version}-%{release}-build
 BuildArch:      noarch
 
 %description
@@ -47,7 +44,7 @@ on how much time you have spent during the day on activities you have
 set up.
 
 %prep
-%setup -qn hamster-%{commit0}
+%setup -qn hamster-%{version}-%{release}
 
 %build
 ./waf --prefix=%{_prefix} --libdir=%{_libdir} --libexecdir=%{_libexecdir} configure build
