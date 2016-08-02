@@ -1,7 +1,7 @@
 Summary:	Flatbed cursors theme
 Name:		flatbed-cursor-theme
 Version:	0.4
-Release:	0%{?dist}
+Release:	1%{?dist}
 License:	GPL
 Group:		User Interface/Desktops
 URL:		http://www.limitland.de/flatbedcursors.html
@@ -28,6 +28,8 @@ huge)
 %install
 %__install -d %{buildroot}%{_datadir}/icons/
 ICONSDIR=%{buildroot}%{_datadir}/icons/ ./install-all
+find %{buildroot}%{_datadir}/icons -type f -name index.theme -delete
+rmdir %{buildroot}%{_datadir}/icons/default
 
 
 %files
@@ -36,6 +38,8 @@ ICONSDIR=%{buildroot}%{_datadir}/icons/ ./install-all
 
 
 %changelog
+* Thu Aug 2 2016  Joshua Rich  <joshua.rich@gmail.com>
+- Remove index.theme files.  Remove default directory.
 * Sat Jul 9 2016  Joshua Rich  <joshua.rich@gmail.com>
 - Update to 0.4.
 * Thu Nov 6 2014  Joshua Rich  <joshua.rich@gmail.com>
