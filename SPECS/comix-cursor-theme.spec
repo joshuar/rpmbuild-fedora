@@ -1,7 +1,7 @@
 Summary:	Comix cursors theme
 Name:		comix-cursor-theme
 Version:	0.9.0
-Release:	0%{?dist}
+Release:	1%{?dist}
 License:	GPL
 Group:		User Interface/Desktops
 URL:		http://www.limitland.de/comixcursors.html
@@ -27,7 +27,6 @@ red and white) 2 different weights (slim and normal)
 %install
 %__install -d %{buildroot}%{_datadir}/icons/
 ICONSDIR=%{buildroot}%{_datadir}/icons/ ./install-all
-find %{buildroot}%{_datadir}/icons -type f -name index.theme -delete
 rmdir %{buildroot}%{_datadir}/icons/default
 
 
