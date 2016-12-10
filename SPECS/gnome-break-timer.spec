@@ -26,6 +26,7 @@ Summary:        GNOME Break Timer
 Url:            https://wiki.gnome.org/GnomeBreakTimer
 Group:          System/GUI/GNOME
 Source0:        https://github.com/GNOME/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source1:		gnome-break-timer.appdata.xml
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  intltool >= 0.40.0
@@ -54,13 +55,14 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Take a Break - GNOME Break Timer helps you remember about it.
 
 %prep
-%setup -qn %{name}-%{commit0}
+%autosetup -n %{name}-%{commit0}
 
 %build
 ./autogen.sh && %{configure}
 
 %install
 %make_install
+%{__install} -m 0644 %{_sourcedir}/gnome-break-timer.appdata.xml %{buildroot}/%{_datadir}/appdata/gnome-break-timer.appdata.xml
 %find_lang %{name}
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
 desktop-file-validate %{buildroot}/%{_datadir}/applications/*.desktop
@@ -94,3 +96,5 @@ fi
 %config %{_sysconfdir}/xdg/autostart/gnome-break-timer-autostart.desktop
 
 %changelog
+* Sat 10 Dec 2016 Joshua Rich <joshua.rich@gmail.com>
+- Version bump for Fedora 25
