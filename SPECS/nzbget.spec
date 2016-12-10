@@ -2,7 +2,7 @@
 
 Name:          nzbget
 Summary:       A binary newsgrabber
-Version:       16.4
+Version:       17.1
 Release:       1%{?dist}
 License:       GPL-2.0
 Url:           http://nzbget.net/
@@ -10,6 +10,8 @@ Source0:       https://github.com/nzbget/nzbget/releases/download/v%{version}/%{
 BuildRequires: libxml2-devel
 BuildRequires: ncurses-devel
 BuildRequires: gnutls-devel
+BuildRequires: openssl-devel
+
 
 %description
 NZBGet is a binary newsgrabber, which downloads files from usenet
@@ -33,6 +35,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgdocdir}
 
 %changelog
+* Sat Dec 10 2016 Joshua Rich  <joshua.rich@gmail.com>
+- 17.1
 * Fri Dec 5 2014 Joshua Rich  <joshua.rich@gmail.com>
 - 14.1
 * Thu Oct 2 2014 Joshua Rich <joshua.rich@gmail.com>
