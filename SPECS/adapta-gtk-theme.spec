@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 
-Name:           adapta-themes
-Version:	3.21.4
-Release:        43
+Name:           adapta-gtk-theme
+Version:	3.89.1.98
+Release:        0%{?dist}
 Summary:        An adaptive Gtk+ theme based on Material Design Guidelines
 License:	GPL-2
 URL:		https://github.com/tista500/Adapta
-Source0:	https://github.com/tista500/Adapta/archive/3.21.4.43.zip
+Source0:	https://github.com/tista500/Adapta/archive/3.89.1.98.zip
 Requires:	gtk-murrine-engine
 Requires:	gtk2-engines
 BuildRequires:	rubygem-bundler
@@ -15,6 +15,9 @@ BuildRequires:	inkscape
 BuildRequires:	glib2-devel > 2.48.0
 Requires:       rubypick
 BuildRequires:  rubypick
+BuildRequires:  sassc
+BuildRequires:  parallel
+BuildRequires:  gdk-pixbuf2-devel
 
 %description
 An adaptive Gtk+ theme based on Material Design Guidelines. Lots of
@@ -22,7 +25,7 @@ elements were forked from Flat-Plat at the start.
 
 
 %prep
-%setup -q -n Adapta-%{version}.%{release}
+%autosetup
 
 
 %build
@@ -41,6 +44,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Dec 10 2016  Joshua Rich <joshua.rich@gmail.com>
+- Bump version.
 * Tue Aug 2 2016  Joshua Rich <joshua.rich@gmail.com>
 - Add rubypick dependancy.
 * Sat Jul 23 2016 Joshua Rich <joshua.rich@gmail.com>
