@@ -18,6 +18,8 @@ BuildRequires:  rubypick
 BuildRequires:  sassc
 BuildRequires:  parallel
 BuildRequires:  gdk-pixbuf2-devel
+BuildRequires:  autoconf
+
 
 %description
 An adaptive Gtk+ theme based on Material Design Guidelines. Lots of
