@@ -2,7 +2,7 @@
 
 Name:           adapta-gtk-theme
 Version:	3.89.1.98
-Release:        0%{?dist}
+Release:        1%{?dist}
 Summary:        An adaptive Gtk+ theme based on Material Design Guidelines
 License:	GPL-2
 URL:		https://github.com/tista500/Adapta
@@ -19,6 +19,7 @@ BuildRequires:  sassc
 BuildRequires:  parallel
 BuildRequires:  gdk-pixbuf2-devel
 BuildRequires:  autoconf
+BuildRequires:  automake
 
 
 %description
